@@ -1,43 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+<head>
+  <meta charset="utf-8">
+  <title>Audio Recording API Demo</title>
+  <link rel="stylesheet" href="src\App.css">
+</head>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+<body>
+  <div class="audio-recording-container">
+    <h1 class="title">Audio Recording API Demo</h1>
+    <div style="display: flex; flex-direction: column;">
+      <h2>Instellingen</h2>
+      <span>
+        <input id="blob-lenght" type="number" value="100" />
+        Frame in MS
+      </span>
+      <span>
+        <input id="frame-lenght" type="number" value="5" />
+        Frames tot het gaat stotteren
+      </span>
+    </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+    <span style="margin-top: 40px;">
+      Spreek de volgende zin uit.
+    </span>
+    <h3 style="width: 40%;">Er was eens een klein jongetje genaamd Tim. Tim woonde in een rustig dorpje aan de rand van het bos. Hij was dol op avontuur en kon urenlang buiten spelen.
+
+      Op een dag besloot Tim om het mysterieuze bos te verkennen. Hij nam zijn verrekijker en zijn rode pet mee. Zijn mama waarschuwde hem om voorzichtig te zijn en niet te ver te gaan.
+    </h3>
+    <span style="margin: 1rem 0"></span>
+    <i class="start-recording-button fa fa-microphone" aria-hidden="true"></i>
+    <div class="recording-contorl-buttons-container hide">
+      <i class="cancel-recording-button fa fa-times-circle-o" aria-hidden="true"></i>
+      <div class="recording-elapsed-time">
+        <i class="red-recording-dot fa fa-circle" aria-hidden="true"></i>
+        <p class="elapsed-time"></p>
+      </div>
+      <i class="stop-recording-button fa fa-stop-circle-o" aria-hidden="true"></i>
+    </div>
+    <div class="text-indication-of-audio-playing-container">
+      <p class="text-indication-of-audio-playing hide">Audio is playing<span>.</span><span>.</span><span>.</span></p>
+    </div>
+  </div>
+  <div class="overlay hide">
+    <div class="browser-not-supporting-audio-recording-box">
+      <p>To record audio, use browsers like Chrome and Firefox that support audio recording.</p>
+      <button type="button" class="close-browser-not-supported-box">Ok.</button>
+    </div>
+  </div>
+
+  <audio controls class="audio-element hide">
+  </audio>
+
+  <script src="src\App.js"></script>
+</body>
+
 </html>

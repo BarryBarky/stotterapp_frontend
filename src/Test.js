@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import stutterRec from './utils/stutterRec.js';
 import './App.css';
+
 
 // stutterRec.handleHidingRecordingControlButtons();
 // stutterRec.handleDisplayingRecordingControlButtons();
@@ -19,8 +20,11 @@ import './App.css';
 // stutterRec.computeElapsedTime();
 
 
-
 const Test = () => {
+    useEffect(() => {
+        console.log(stutterRec());
+      }, []);
+    
     const h1style = {
         display: "flex",
         flexDirection: "column"

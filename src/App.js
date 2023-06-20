@@ -7,7 +7,7 @@ import Instructions from "./pages/Instructions";
 import End from "./pages/End";
 
 function App(){
-
+  
   return (
     <>
         <BrowserRouter>

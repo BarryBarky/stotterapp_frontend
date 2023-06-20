@@ -73,11 +73,9 @@ const Hints = ({hints, isFinished, variantID, isTimerActive, amountTime}) => {
             style={{backgroundImage: `url(${classroom})`}}>
             <section className={"px-5 sm:p-0 h-full flex items-start"}>
                 <img src={bram} alt={"Bram"} className={"w-auto h-full"}/>
-
-                <p className={`bg-secondary w-full p-4 border text-md md:text-lg bottom-[-1rem] absolute sm:static flex flex-col border-accent ${showHint ? 'visible' : 'invisible'}`}>
+                <p className={`bg-secondary w-full p-4 border text-md md:text-lg flex flex-col border-accent ${showHint ? 'visible' : 'invisible'}`}>
                     {showHint && showHint.text}
                 </p>
-
             </section>
         </section>
     );

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import bram from "../img/bram1.png"
-import playAudio from "../lib/playAudio";
+import classroom from "../img/classroom.jpg"
+import {playAudio} from "../lib/playAudio";
 
 const Hints = ({hints, isFinished, variantID, isTimerActive, amountTime}) => {
     
@@ -67,13 +68,13 @@ const Hints = ({hints, isFinished, variantID, isTimerActive, amountTime}) => {
 
     
     return (
-        <section className={"flex flex-col w-full p-5"}>
-            <section className={"w-full flex gap-5 md:gap-10 items-center"}>
-                <section className={"relative flex flex-col w-1/2 md:w-1/3"}>
+        <section className={`flex flex-col items-center w-full bg-cover h-full min-h-[200px] sm:min-h-[400px] relative bg-center`} style={{backgroundImage: `url(${classroom})`}}>
+            <section className={"absolute bottom-3 w-full px-5 sm:p-0 w-3/6 sm:w-4/5 flex items-start"}>
+                <section className={"relative flex flex-col"}>
                     <img src={bram} alt={"Bram"}/>
                 </section>
                 {showHint &&
-                <p className={"bg-primary p-4 border text-md md:text-lg border-accent"}>
+                <p className={"bg-secondary p-4 border text-md md:text-lg hidden md:flex flex-col border-accent"}>
                     {showHint.text}
                 </p>
                 }

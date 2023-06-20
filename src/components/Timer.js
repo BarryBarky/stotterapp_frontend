@@ -23,13 +23,11 @@ const Timer = ({isTimerActive, setIsFinished, setIsTimerActive, amount}) => {
 
     }, [counter, isTimerActive, setIsFinished, setIsTimerActive, amount])
     return (
-        <section className={"z-10 w-full bg-primary sticky flex-col md:flex-row flex items-center md:justify-between top-0 p-5"}>
-            <section className={"flex flex-col pb-5 md:pb-0 md:w-1/5"}>
-                <Logo/>
-            </section>
-            <section className={"flex flex-col"}>
-                <span className={"text-3xl font-bold"}>Timer:</span>
-                <span className={"text-2xl"}>{counter} Seconden</span>
+        <section className={"z-10 w-full gap-10 bg-secondary shadow sticky flex-col md:flex-row flex items-center md:justify-between top-0 p-5"}>
+            <Logo classes={"w-1/3 md:w-1/4 lg:w-1/6"}/>
+            <section className={"flex flex-col items-center md:items-start"}>
+                <span className={"text-xl"}>Tijd:</span>
+                <span className={"text-xl"}><span className={"font-bold text-2xl"}>{counter}</span> Seconden</span>
             </section>
         </section>
     );

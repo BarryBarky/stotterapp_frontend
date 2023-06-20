@@ -2,17 +2,27 @@ import {useEffect, useState} from "react";
 import BasicIconButton from "./buttons/BasicIconButton";
 import microphone from "../img/microphone.svg"
 import audioRecorder from "../lib/audioRecording";
-import playAudio from "../lib/playAudio";
+import {playAudio, stopAudio} from "../lib/playAudio";
 import Recording from "./Recording";
 import BasicTextButton from "./buttons/BasicTextButton";
 import SpeechRecognition, {useSpeechRecognition} from "react-speech-recognition";
 
-const Controls = ({variantId, text, setIsTimerActive, isFinished, setIsFinished, title}) => {
+const Controls = ({variantId, text, setIsTimerActive, isFinished, setIsFinished, title, skipLevel}) => {
     const [sentences, setSentences] = useState([]);
     const [words, setWords] = useState([]);
     const [sentenceCounter, setSentenceCounter] = useState(0);
     const [wordCounter, setWordCounter] = useState(0);
     const [isRecording, setIsRecording] = useState(false);
+
+
+    const deleteAllTimeouts = () => {
+        const highestId = window.setTimeout(() => {
+            for (let i = highestId; i >= 0; i--) {
+                window.clearInterval(i);
+            }
+        }, 0);
+    }
+
 
     // variant 1
     useEffect(() => {
@@ -136,28 +146,38 @@ const Controls = ({variantId, text, setIsTimerActive, isFinished, setIsFinished,
     }
 
     return (
-        <section className={"w-full bg-secondary p-5 flex justify-between gap-5 md:gap-10 flex-col"}>
+        <section className={"w-full items-center bg-secondary border border-gray p-5 flex justify-between gap-5 md:gap-10 flex-col"}>
             <section className={"text-lg font-bold flex justify-center"}>
                 <h1>{title}</h1>
             </section>
-            <section className={"bg-primary flex flex-col gap-2 rounded h-full text-md md:text-lg p-5"}>
+            <section className={"flex w-full flex-col rounded h-full text-md md:text-lg md:px-5"}>
                 {
                     variantId === 1 ? text : generatedText()
                 }
             </section>
-            <section className={"flex justify-between"}>
+            <section className={"flex justify-between order-first md:order-3"}>
                 {isRecording ?
                     <section className={"flex gap-10"}>
                         <Recording/>
                     </section>
                     :
-                    <section className={"flex"}>
+                    <section className={"flex gap-10 md:gap-20"}>
                         {isFinished ?
+                            <>
                             <BasicTextButton text={"opnieuw proberen"} handler={() => {
                                 setIsFinished(false)
                                 setSentenceCounter(0);
                                 setWordCounter(0);
+                                stopAudio()
+                                deleteAllTimeouts()
                             }}/>
+                                <BasicTextButton text={"Skip Level"} handler={() => {
+                                    stopAudio()
+                                    deleteAllTimeouts()
+                                    setIsFinished(false)
+                                    skipLevel()
+                                }}/>
+                            </>
                             :
                             variantId === 1 ?
                                 <BasicIconButton icon={microphone} handler={startAudioRecording} classes={"w-fit"}/>
@@ -172,7 +192,6 @@ const Controls = ({variantId, text, setIsTimerActive, isFinished, setIsFinished,
                                     />
                                     :
                                     ""
-
 
                         }
                     </section>

@@ -14,7 +14,7 @@ const Home = () => {
                     <Logo/>
                 </section>
                 <section className={"flex flex-col h-2/3 gap-10 items-center"}>
-                    <BasicTextButton text={"Start"} handler={() => navigate('/levels')} classes={"text-3xl"}/>
+                    <BasicTextButton text={"Start"} handler={() => navigate('/instructies')} classes={"text-3xl"}/>
                     <section className={"relative w-4/6"}>
                         <img src={bram} alt={"bram"}/>
                     </section>

@@ -19,7 +19,7 @@ const End = () => {
                         </li>
                     </section>
                 </ul>
-                <BasicTextButton text={"Begrepen"} handler={() => navigate('/levels')} classes={"w-fit"}/>
+                <BasicTextButton text={"Opnieuw spelen"} handler={() => navigate('/levels')} classes={"w-fit"}/>
             </section>
 
         </section>

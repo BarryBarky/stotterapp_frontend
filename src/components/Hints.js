@@ -4,7 +4,7 @@ import classroom from "../img/classroom.jpg"
 import {playAudio} from "../lib/playAudio";
 
 const Hints = ({hints, isFinished, variantID, isTimerActive, amountTime}) => {
-    
+
     const [showHint, setShowHint] = useState(null);
     const [allHints, setAllHints] = useState(hints);
 
@@ -66,18 +66,18 @@ const Hints = ({hints, isFinished, variantID, isTimerActive, amountTime}) => {
         }
     }, [showHint])
 
-    
+
     return (
-        <section className={`flex flex-col items-center w-full bg-cover h-full min-h-[200px] sm:min-h-[400px] relative bg-center`} style={{backgroundImage: `url(${classroom})`}}>
-            <section className={"absolute bottom-1 md:bottom-3 w-full px-5 sm:p-0 w-4/12 sm:w-4/5 flex items-start"}>
-                <section className={"relative flex flex-col"}>
-                    <img src={bram} alt={"Bram"}/>
-                </section>
-                {showHint &&
-                <p className={"bg-secondary p-4 border text-md md:text-lg hidden md:flex flex-col border-accent"}>
-                    {showHint.text}
+        <section
+            className={`flex flex-col items-center w-full bg-cover h-full min-h-[200px] sm:min-h-[400px] bg-center py-2 sm:py-10`}
+            style={{backgroundImage: `url(${classroom})`}}>
+            <section className={"px-5 sm:p-0 h-full flex items-start"}>
+                <img src={bram} alt={"Bram"} className={"w-auto h-full"}/>
+
+                <p className={`bg-secondary w-full p-4 border text-md md:text-lg bottom-[-1rem] absolute sm:static flex flex-col border-accent ${showHint ? 'visible' : 'invisible'}`}>
+                    {showHint && showHint.text}
                 </p>
-                }
+
             </section>
         </section>
     );

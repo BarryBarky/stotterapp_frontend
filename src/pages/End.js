@@ -19,6 +19,23 @@ const End = () => {
                         </li>
                     </section>
                 </ul>
+                <section className={"w-full flex flex-col gap-5"}>
+                    <h2 className={"font-bold text-accent"}>Hoe wel met mensen die stotteren om te gaan?</h2>
+                    <ul className={"w-full flex flex-col gap-2 list-disc pl-5"}>
+                        <li>
+                            Uit laten praten
+                        </li>
+                        <li>
+                            Wachten
+                        </li>
+                        <li>
+                            Laten zien dat je luistert, aankijken
+                        </li>
+                        <li>
+                            Geen complimenten als er een keer minder stotters zijn
+                        </li>
+                    </ul>
+                </section>
                 <BasicTextButton text={"Opnieuw spelen"} handler={() => navigate('/levels')} classes={"w-fit"}/>
             </section>
 
